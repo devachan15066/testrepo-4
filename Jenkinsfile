@@ -8,7 +8,7 @@ pipeline {
       stage('Build') {
         steps {
           script {
-            withCredentials([azureServicePrincipal(credentialsId: 'supportjenkins', variable: 'AZURE_CREDENTIALS')])
+            withCredentials([azureServicePrincipal(credentialsId: '23-02-service-principal', variable: 'AZURE_CREDENTIALS')])
             echo "TESTING AGENT"
         }
       }
