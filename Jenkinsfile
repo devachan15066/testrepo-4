@@ -2,15 +2,14 @@ pipeline {
   agent {
     kubernetes {
       yamlFile 'podtemplate.yaml'
-      azureCredentialsId 'supportjenkins' 
     }
   }
-  stages {
-    stage('Build') {
-      steps {
-        script {
-          echo "TESTING AGENT"
-          // Add your build steps here
+    stages {
+      stage('Build') {
+        steps {
+          script {
+            withCredentials([azureServicePrincipal(credentialsId: 'supportjenkins', variable: 'AZURE_CREDENTIALS')])
+            echo "TESTING AGENT"
         }
       }
     }
